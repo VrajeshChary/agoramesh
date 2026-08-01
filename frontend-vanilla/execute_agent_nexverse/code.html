@@ -1,0 +1,205 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NexVerse - Live Agent Execution Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#00285d",
+                        "surface-container-high": "#2a2a2c",
+                        "surface-dim": "#131315",
+                        "surface": "#131315",
+                        "on-surface": "#e5e1e4",
+                        "on-surface-variant": "#c2c6d6",
+                        "outline": "#8c909f",
+                        "outline-variant": "#27272A"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #09090B; color: #e5e1e4; font-family: 'Geist', sans-serif; }
+        .card-surface { background-color: #111113; border: 1px solid #27272A; border-radius: 0.75rem; padding: 1.5rem; }
+        .btn-primary { background-color: #3B82F6; color: #FAFAFA; transition: all 0.2s; }
+        .btn-primary:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full bg-surface/80 backdrop-blur-md border-b border-outline-variant z-50">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<a href="../index.html" class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">terminal</span></div>
+    NexVerse Terminal
+</a>
+</div>
+<a href="../index.html" class="btn-primary px-md py-sm rounded-lg font-label-md text-label-md font-bold">Return to Marketplace</a>
+</div>
+</nav>
+
+<!-- Main Execution Terminal -->
+<main class="flex-1 mt-[64px] px-md md:px-gutter max-w-container-max mx-auto w-full py-xl space-y-lg">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md border-b border-outline-variant pb-md">
+    <div>
+        <h1 class="font-headline-lg text-headline-lg text-on-surface flex items-center gap-2">
+            <span class="material-symbols-outlined text-rose-400">terminal</span> Live Agent Execution Sandbox
+        </h1>
+        <p class="font-body-md text-body-md text-on-surface-variant">Execute serverless workloads across 20 production AI agents on the Algorand ZK Router.</p>
+    </div>
+    <div class="flex items-center gap-sm">
+        <span class="font-label-md text-label-md text-on-surface-variant">Select Agent:</span>
+        <select id="agent-selector" onchange="updateSelectedAgent()" class="bg-surface-dim border border-outline-variant text-on-surface text-body-md rounded-lg py-xs pl-sm pr-lg font-code-sm outline-none focus:border-primary">
+            <!-- Populated via JS -->
+        </select>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+    <!-- Selected Agent Metadata Card -->
+    <div class="card-surface flex flex-col justify-between space-y-md">
+        <div class="space-y-sm">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h2 id="agent-name" class="font-headline-md text-headline-md text-on-surface">PDF Genius</h2>
+                    <p id="agent-provider" class="font-label-md text-label-md text-on-surface-variant">by DocuMind Systems</p>
+                </div>
+                <span id="agent-trust" class="font-code-sm text-xs text-emerald-400 font-bold">99.9% Trust</span>
+            </div>
+            <p id="agent-desc" class="font-body-md text-body-md text-on-surface-variant">Neural document parser with OCR, contract summary, and multi-language PDF synthesis.</p>
+        </div>
+
+        <div class="space-y-xs font-code-sm text-xs pt-md border-t border-outline-variant">
+            <div class="flex justify-between"><span class="text-outline">Rating:</span> <span id="agent-rating" class="text-tertiary-fixed-dim font-bold">★ 4.9</span></div>
+            <div class="flex justify-between"><span class="text-outline">Latency:</span> <span id="agent-latency" class="text-on-surface">120ms avg</span></div>
+            <div class="flex justify-between"><span class="text-outline">Pricing:</span> <span id="agent-price" class="text-primary font-bold">$0.002 / page</span></div>
+        </div>
+    </div>
+
+    <!-- Execution Terminal Input & Streaming Logs -->
+    <div class="card-surface lg:col-span-2 space-y-md">
+        <div class="flex justify-between items-center">
+            <h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+                Input Payload
+            </h3>
+            <span class="font-code-sm text-xs text-outline">REST & PyTeal Ready</span>
+        </div>
+
+        <textarea id="payload-input" rows="4" class="w-full bg-surface-dim border border-outline-variant rounded-lg p-sm font-code-sm text-code-sm text-on-surface outline-none focus:border-primary"></textarea>
+
+        <div class="flex justify-between items-center">
+            <span class="font-code-sm text-xs text-outline">Algorand Mainnet Settled</span>
+            <button onclick="executeAgent()" id="btn-run" class="btn-primary px-lg py-sm rounded-lg font-label-md text-label-md font-bold flex items-center gap-xs">
+                <span class="material-symbols-outlined text-[16px]">play_arrow</span> Run Workload Execution
+            </button>
+        </div>
+
+        <div id="output-box" class="p-md rounded-lg bg-surface-dim border border-outline-variant font-code-sm text-xs text-on-surface-variant space-y-md hidden">
+            <div class="flex justify-between items-center border-b border-outline-variant/60 pb-xs">
+                <span class="text-emerald-400 font-bold flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">check_circle</span> Execution Stream (200 OK)
+                </span>
+                <span class="text-indigo-400 text-[11px]" id="tx-hash-badge">TX: 0x9a8f...3b1d</span>
+            </div>
+
+            <div id="terminal-stream-logs" class="text-[11px] space-y-1 text-outline font-code-sm"></div>
+            <div id="custom-output-display" class="pt-sm border-t border-outline-variant/60"></div>
+        </div>
+    </div>
+</div>
+</main>
+
+<script>
+    const agents = [
+        { name: "PDF Genius", company: "DocuMind Systems", provider: "DocuMind Inc", rating: "4.9 (2.4k)", trust: "99.9%", latency: "120ms avg", price: "$0.002 / page", desc: "Neural document parser with OCR, contract summary, and multi-language PDF synthesis.", sampleInput: `{ "document_url": "https://example.com/contract.pdf", "extract": ["clauses", "parties"] }`, customOutput: `<div class="bg-slate-900 p-3 rounded text-slate-200"><strong>📄 Contract Extraction:</strong> Parties: NexVerse & TechCorp | Governing Law: Delaware | Clauses: 12 Verified</div>` },
+        { name: "LogoForge AI", company: "BrandCraft Labs", provider: "BrandCraft Studio", rating: "4.8 (1.8k)", trust: "98.7%", latency: "850ms avg", price: "$0.05 / logo", desc: "Autonomous vector logo synthesis engine generating high-resolution scalable SVG brand assets.", sampleInput: `{ "brand_name": "Apex", "style": "vector" }`, customOutput: `<div class="bg-purple-950 p-3 rounded text-purple-200"><strong>🎨 Vector SVG Logo:</strong> Generated high-resolution brand badge for "Apex"</div>` },
+        { name: "VisionOCR", company: "NeuralEye Tech", provider: "NeuralEye AI Labs", rating: "4.9 (3.1k)", trust: "99.8%", latency: "45ms avg", price: "$0.001 / req", desc: "Ultra-fast edge visual detection and multi-script OCR engine processing handwriting and image streams.", sampleInput: `{ "mode": "receipt_ocr" }`, customOutput: `<div class="bg-emerald-950 p-3 rounded text-emerald-200"><strong>👁️ OCR Result:</strong> "Invoice #2026-991 | Total: $420.50"</div>` },
+        { name: "LegalMind", company: "JurisAI Systems", provider: "JurisTech Global", rating: "4.95 (920)", trust: "100%", latency: "320ms avg", price: "$0.08 / query", desc: "Regulatory compliance analysis agent scanning corporate contracts and NDAs for legal risks.", sampleInput: `{ "clause": "Indemnification cap $10M" }`, customOutput: `<div class="bg-amber-950 p-3 rounded text-amber-200"><strong>⚖️ Compliance Status:</strong> PASS | Risk Level: Low (0.02)</div>` },
+        { name: "FinanceGPT", company: "QuantEdge Intelligence", provider: "QuantEdge Capital", rating: "4.9 (4.5k)", trust: "99.6%", latency: "95ms avg", price: "$0.01 / analysis", desc: "Real-time financial sentiment parser, SEC filing analyzer, algorithmic risk evaluator, and yield predictor.", sampleInput: `{ "symbol": "ALGO/USD" }`, customOutput: `<div class="bg-sky-950 p-3 rounded text-sky-200"><strong>📈 Financial Signal:</strong> Bullish Score 88.4 | Target Yield +14.2%</div>` },
+        { name: "DeepResearch", company: "Cognition Labs", provider: "OpenCognition Org", rating: "4.85 (5.2k)", trust: "99.4%", latency: "1.4s avg", price: "$0.03 / report", desc: "Autonomous multi-hop internet researcher synthesizing academic papers into structured executive briefs.", sampleInput: `{ "topic": "Algorand ZK Rollups" }`, customOutput: `<div class="bg-purple-950 p-3 rounded text-purple-200"><strong>🔬 Research Brief:</strong> 12 ArXiv papers summarized | Throughput 10,000 TPS</div>` },
+        { name: "SlideMaker", company: "DeckCraft AI", provider: "DeckCraft Solutions", rating: "4.75 (1.1k)", trust: "97.9%", latency: "650ms avg", price: "$0.04 / deck", desc: "Converts raw markdown notes, product specs, or data sheets into pitch decks and slide layouts.", sampleInput: `{ "slides": 3 }`, customOutput: `<div class="bg-rose-950 p-3 rounded text-rose-200"><strong>📊 Presentation:</strong> 3 Slide Decks Generated in SVG format</div>` },
+        { name: "CodeAudit", company: "CyberGuard Security", provider: "CyberGuard AI", rating: "4.92 (2.9k)", trust: "99.9%", latency: "180ms avg", price: "$0.005 / file", desc: "Static vulnerability scanner detecting reentrancy bugs, secret leaks, and logic flaws.", sampleInput: `{ "language": "solidity" }`, customOutput: `<div class="bg-red-950 p-3 rounded text-red-200"><strong>⚠️ Audit Warning:</strong> Reentrancy pattern detected. Line 1 fix applied.</div>` },
+        { name: "PromptShield", company: "Aegis Safety Networks", provider: "Aegis Security", rating: "4.98 (6.1k)", trust: "100%", latency: "15ms avg", price: "$0.0005 / req", desc: "Enterprise firewall protecting LLMs against prompt injection, jailbreaks, and toxic payloads.", sampleInput: `{ "prompt": "jailbreak test" }`, customOutput: `<div class="bg-sky-950 p-3 rounded text-sky-200"><strong>🛡️ Firewall Audit:</strong> Prompt Injection BLOCKED | Threat Score 0.99</div>` },
+        { name: "VoiceSmith", company: "AudioPhonics AI", provider: "AudioPhonics Lab", rating: "4.8 (1.4k)", trust: "98.5%", latency: "210ms avg", price: "$0.003 / sec", desc: "Neural voice synthesis & instant voice cloning agent providing ultra-realistic text-to-speech.", sampleInput: `{ "text": "NexVerse Speech" }`, customOutput: `<div class="bg-fuchsia-950 p-3 rounded text-fuchsia-200"><strong>🎙️ Speech Output:</strong> Synthesized 2.4s WAV audio buffer</div>` },
+        { name: "Insight AI", company: "Apex Analytics Corp", provider: "Apex Analytics", rating: "4.88 (3.8k)", trust: "99.2%", latency: "290ms avg", price: "$0.015 / batch", desc: "Telemetry anomaly detector uncovering hidden user churn drivers and behavioral trends.", sampleInput: `{ "metric": "churn" }`, customOutput: `<div class="bg-teal-950 p-3 rounded text-teal-200"><strong>📊 Telemetry Insights:</strong> Checkout anomaly detected at step #2</div>` },
+        { name: "AutoScraper", company: "MeshCrawler Tech", provider: "MeshCrawler Systems", rating: "4.7 (4.1k)", trust: "96.8%", latency: "380ms avg", price: "$0.002 / page", desc: "Resilient headless crawler agent extracting dynamic JavaScript DOM structures and outputting JSON.", sampleInput: `{ "url": "https://news.ycombinator.com" }`, customOutput: `<div class="bg-orange-950 p-3 rounded text-orange-200"><strong>🕷️ Extracted DOM JSON:</strong> 30 headlines scraped successfully</div>` },
+        { name: "NewsSynth", company: "MediaStream Intelligence", provider: "MediaStream Inc", rating: "4.65 (950)", trust: "97.2%", latency: "140ms avg", price: "$0.004 / feed", desc: "Real-time global media aggregator filtering noise, detecting bias, and compiling news roundups.", sampleInput: `{ "topic": "crypto" }`, customOutput: `<div class="bg-indigo-950 p-3 rounded text-indigo-200"><strong>📰 News Stream:</strong> 14 global stories summarized with bias check</div>` },
+        { name: "MedAssist", company: "BioHealth AI Systems", provider: "BioHealth Tech", rating: "4.96 (1.7k)", trust: "99.9%", latency: "190ms avg", price: "$0.025 / query", desc: "Clinical decision support agent trained on medical literature assisting physicians with ICD-10 coding.", sampleInput: `{ "symptoms": ["migraine"] }`, customOutput: `<div class="bg-emerald-950 p-3 rounded text-emerald-200"><strong>🏥 Clinical Diagnosis:</strong> ICD-10 G43.009 | Drug interaction clear</div>` },
+        { name: "TaxPilot", company: "FiscalLogic Global", provider: "FiscalLogic Inc", rating: "4.89 (2.2k)", trust: "99.7%", latency: "420ms avg", price: "$0.05 / return", desc: "Multi-jurisdictional tax optimizer computing crypto capital gains, VAT deductions, and compliance.", sampleInput: `{ "gain": 320 }`, customOutput: `<div class="bg-yellow-950 p-3 rounded text-yellow-200"><strong>🧾 Tax Liability:</strong> Short-term gain $320 | Tax estimate: $48</div>` },
+        { name: "SEOBoost", company: "RankPulse AI", provider: "RankPulse Media", rating: "4.78 (3.3k)", trust: "98.1%", latency: "160ms avg", price: "$0.008 / URL", desc: "Keyword gap analyzer, schema markup generator, and backlink audit agent optimized for Google SGE.", sampleInput: `{ "url": "nexverse.ai" }`, customOutput: `<div class="bg-green-950 p-3 rounded text-green-200"><strong>🚀 SEO Score:</strong> 94/100 | Schema markup injected</div>` },
+        { name: "ChatFlow", company: "ConversaCore Systems", provider: "ConversaCore Labs", rating: "4.82 (5.9k)", trust: "99.0%", latency: "60ms avg", price: "$0.001 / msg", desc: "Low-latency multi-modal chatbot supporting long-memory retention, function calling, and live CRM sync.", sampleInput: `{ "msg": "hello" }`, customOutput: `<div class="bg-cyan-950 p-3 rounded text-cyan-200"><strong>💬 Bot Response:</strong> "Hello! How can I assist with your workflow?"</div>` },
+        { name: "MailWriter", company: "OutboundPro Tech", provider: "OutboundPro AI", rating: "4.72 (1.9k)", trust: "97.5%", latency: "110ms avg", price: "$0.002 / email", desc: "Cold outreach and support response writer crafting personalized emails based on recipient profiles.", sampleInput: `{ "goal": "outreach" }`, customOutput: `<div class="bg-purple-950 p-3 rounded text-purple-200"><strong>✉️ Email Draft:</strong> Subject: AI Microservices integration for your stack</div>` },
+        { name: "ImageSense", company: "PixelMind Vision", provider: "PixelMind Labs", rating: "4.91 (4.8k)", trust: "99.5%", latency: "130ms avg", price: "$0.006 / img", desc: "Automated image tagger, background remover, product photo enhancer, and NSFW safety moderation agent.", sampleInput: `{ "task": "bg_remove" }`, customOutput: `<div class="bg-pink-950 p-3 rounded text-pink-200"><strong>🖼️ Image Tagging:</strong> Background Removed | NSFW Score 0.00%</div>` },
+        { name: "DeployBot", company: "InfraOps Automations", provider: "InfraOps Cloud", rating: "4.94 (3.6k)", trust: "99.9%", latency: "90ms avg", price: "$0.02 / deploy", desc: "Autonomous Kubernetes & Terraform deployment agent setting up zero-downtime CI/CD pipelines.", sampleInput: `{ "chart": "helm-v2" }`, customOutput: `<div class="bg-sky-950 p-3 rounded text-sky-200"><strong>🚀 K8s Deployment:</strong> 3/3 Replicas Online | Zero Downtime Verified</div>` }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const select = document.getElementById("agent-selector");
+        agents.forEach((a, i) => {
+            const opt = document.createElement("option");
+            opt.value = i;
+            opt.innerText = `${a.name} (${a.company})`;
+            select.appendChild(opt);
+        });
+        updateSelectedAgent();
+    });
+
+    function updateSelectedAgent() {
+        const idx = document.getElementById("agent-selector").value;
+        const a = agents[idx];
+        document.getElementById("agent-name").innerText = a.name;
+        document.getElementById("agent-provider").innerText = `by ${a.company} (${a.provider})`;
+        document.getElementById("agent-desc").innerText = a.desc;
+        document.getElementById("agent-rating").innerText = `★ ${a.rating}`;
+        document.getElementById("agent-trust").innerText = `${a.trust} Trust`;
+        document.getElementById("agent-latency").innerText = a.latency;
+        document.getElementById("agent-price").innerText = a.price;
+
+        document.getElementById("payload-input").value = a.sampleInput;
+        document.getElementById("output-box").classList.add("hidden");
+    }
+
+    function executeAgent() {
+        const idx = document.getElementById("agent-selector").value;
+        const a = agents[idx];
+        const btn = document.getElementById("btn-run");
+        const box = document.getElementById("output-box");
+        const logs = document.getElementById("terminal-stream-logs");
+        const customOut = document.getElementById("custom-output-display");
+
+        btn.disabled = true;
+        btn.innerText = "Executing...";
+        box.classList.remove("hidden");
+        logs.innerHTML = "<div>[0ms] 🔌 Connecting to Algorand ZK Router...</div>";
+
+        setTimeout(() => {
+            logs.innerHTML += "<div>[30ms] 🛡️ Verifying ZK Trust Token...</div>";
+        }, 100);
+
+        setTimeout(() => {
+            logs.innerHTML += `<div>[70ms] ⚡ Running ${a.name} microservice...</div>`;
+        }, 220);
+
+        setTimeout(() => {
+            const tx = "0x" + Math.random().toString(16).substr(2, 10);
+            logs.innerHTML += `<div>[110ms] 🟢 Execution Completed in ${a.latency}</div>`;
+            logs.innerHTML += `<div class="text-indigo-400">[140ms] ⛓️ Settled Micro-Payment on Algorand Mainnet | TX: ${tx}</div>`;
+            document.getElementById("tx-hash-badge").innerText = `TX: ${tx}`;
+            customOut.innerHTML = a.customOutput;
+
+            btn.disabled = false;
+            btn.innerText = "Run Workload Execution";
+        }, 400);
+    }
+</script>
+</body></html>

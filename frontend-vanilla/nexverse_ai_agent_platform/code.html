@@ -1,0 +1,148 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NexVerse - AI Agent Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#00285d",
+                        "tertiary-container": "#df7412",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-surface-variant": "#c2c6d6",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#311400",
+                        "surface-container-high": "#2a2a2c",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "inverse-primary": "#005ac2",
+                        "secondary": "#c6c6c7",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-bright": "#39393b",
+                        "surface-variant": "#353437",
+                        "surface-container-low": "#1c1b1d",
+                        "on-tertiary-container": "#461f00",
+                        "surface-dim": "#131315",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface": "#131315",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e1e4",
+                        "on-primary-fixed": "#001a42",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#353437",
+                        "on-tertiary": "#502400",
+                        "on-secondary": "#2f3131",
+                        "surface-tint": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e1e4",
+                        "secondary-container": "#454747",
+                        "on-secondary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface": "#e5e1e4",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary": "#ffb786",
+                        "inverse-on-surface": "#313032",
+                        "on-error": "#690005",
+                        "surface-container": "#201f22",
+                        "background": "#131315",
+                        "outline": "#8c909f",
+                        "error": "#ffb4ab",
+                        "on-primary": "#002e6a",
+                        "outline-variant": "#424754",
+                        "primary-container": "#4d8eff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "40px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "2xl": "64px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "code-sm": ["Geist Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #09090B; color: #FAFAFA; font-family: 'Geist', sans-serif; }
+        .card-surface { background-color: #111113; border: 1px solid #27272A; }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-md fixed top-0 w-full border-b border-outline-variant flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto z-50">
+<div class="flex items-center gap-xl">
+<a class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2" href="../index.html">
+    <div class="w-8 h-8 rounded bg-blue-600 flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">hub</span></div>
+    NexVerse Platform
+</a>
+<div class="hidden md:flex gap-lg font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html">Marketplace</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../dashboard_nexverse/code.html">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../execute_agent_nexverse/code.html">Execution</a>
+</div>
+</div>
+<a href="../index.html" class="bg-[#3B82F6] text-[#FAFAFA] font-label-md text-label-md px-md py-sm rounded">Launch Application</a>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow pt-2xl pb-2xl px-gutter max-w-container-max mx-auto w-full space-y-2xl">
+<section class="mt-xl text-center max-w-3xl mx-auto space-y-md">
+<h1 class="font-display-lg text-display-lg text-on-surface">Algorand-Powered AI Microservice Platform</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">The decentralized engine connecting developers to 20 production-ready AI agents with zero-trust verification and low latency.</p>
+</section>
+
+<!-- Bento Feature Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+    <div class="card-surface rounded-lg p-lg space-y-md">
+        <span class="material-symbols-outlined text-blue-400 text-3xl">verified_user</span>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Cryptographic Trust</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Deterministic verification protocol ensuring every agent execution payload is signed and audited on-chain.</p>
+    </div>
+    <div class="card-surface rounded-lg p-lg space-y-md">
+        <span class="material-symbols-outlined text-emerald-400 text-3xl">speed</span>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Sub-Second Latency</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Global edge router dispatching requests to nearest GPU nodes with an average response time of 142ms.</p>
+    </div>
+    <div class="card-surface rounded-lg p-lg space-y-md">
+        <span class="material-symbols-outlined text-purple-400 text-3xl">payments</span>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Pay-Per-Call Pricing</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Micro-payment smart contracts enabling seamless pay-as-you-go executions starting at $0.0005 per request.</p>
+    </div>
+</section>
+</main>
+
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-xl mt-auto">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">NexVerse Platform</span>
+<span class="text-on-surface-variant font-body-md text-body-md">© 2026 NexVerse AI. Engineering Excellence.</span>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NexVerse - AI Agent Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#00285d",
+                        "tertiary-container": "#df7412",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-surface-variant": "#c2c6d6",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#311400",
+                        "surface-container-high": "#2a2a2c",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "inverse-primary": "#005ac2",
+                        "secondary": "#c6c6c7",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-bright": "#39393b",
+                        "surface-variant": "#353437",
+                        "surface-container-low": "#1c1b1d",
+                        "on-tertiary-container": "#461f00",
+                        "surface-dim": "#131315",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface": "#131315",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e1e4",
+                        "on-primary-fixed": "#001a42",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#353437",
+                        "on-tertiary": "#502400",
+                        "on-secondary": "#2f3131",
+                        "surface-tint": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e1e4",
+                        "secondary-container": "#454747",
+                        "on-secondary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface": "#e5e1e4",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary": "#ffb786",
+                        "inverse-on-surface": "#313032",
+                        "on-error": "#690005",
+                        "surface-container": "#201f22",
+                        "background": "#131315",
+                        "outline": "#8c909f",
+                        "error": "#ffb4ab",
+                        "on-primary": "#002e6a",
+                        "outline-variant": "#424754",
+                        "primary-container": "#4d8eff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "40px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "2xl": "64px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "code-sm": ["Geist Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #09090B; color: #FAFAFA; font-family: 'Geist', sans-serif; }
+        .glass-panel { background: rgba(19, 19, 21, 0.85); backdrop-filter: blur(16px); }
+        .glow-hover:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+        .card-surface { background-color: #111113; border: 1px solid #27272A; }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-md fixed top-0 w-full border-b border-outline-variant flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto z-50">
+<div class="flex items-center gap-xl">
+<a class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2" href="../index.html">
+    <div class="w-8 h-8 rounded bg-blue-600 flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">hub</span></div>
+    NexVerse
+</a>
+<div class="hidden md:flex gap-lg font-body-md text-body-md">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="../index.html">Marketplace</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../dashboard_nexverse/code.html">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../execute_agent_nexverse/code.html">Execution</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../nexverse_ai_agent_platform/code.html">Platform</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<a href="../index.html" class="bg-[#3B82F6] text-[#FAFAFA] font-label-md text-label-md px-md py-sm rounded glow-hover block">Get Started</a>
+</div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow pt-2xl pb-2xl px-gutter max-w-container-max mx-auto w-full">
+<!-- Hero Section -->
+<section class="mt-xl md:mt-2xl flex flex-col items-center text-center max-w-4xl mx-auto space-y-lg relative z-10">
+<div class="inline-flex items-center gap-xs px-sm py-unit rounded-full border border-outline-variant bg-surface-container-low mb-md">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-size: 16px;">bolt</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Powered by Algorand ZK-Trust Ledger</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface leading-tight">
+                Build. Deploy. Monetize <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-400 to-inverse-primary">20 AI Agents.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-md mb-xl">
+                Discover verified AI microservices including PDF Genius, LogoForge AI, CodeAudit, and PromptShield with transparent pay-per-call pricing.
+            </p>
+<div class="flex flex-col sm:flex-row gap-md justify-center w-full">
+<a href="../index.html" class="bg-[#3B82F6] text-[#FAFAFA] font-body-md text-body-md px-lg py-sm rounded glow-hover transition-transform hover:scale-[1.01] text-center">
+                    Explore 20 Agents
+</a>
+<a href="../dashboard_nexverse/code.html" class="bg-transparent text-on-surface border border-[#27272A] font-body-md text-body-md px-lg py-sm rounded hover:bg-[#18181B] transition-colors text-center">
+                    Developer Dashboard
+</a>
+</div>
+<div class="flex items-center justify-center gap-xl mt-xl pt-lg border-t border-[#27272A] w-full max-w-lg opacity-90">
+<div class="flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-on-surface">1,482,910</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Executions</span>
+</div>
+<div class="h-8 w-px bg-[#27272A]"></div>
+<div class="flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-emerald-400">99.1%</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Avg Trust Score</span>
+</div>
+<div class="h-8 w-px bg-[#27272A]"></div>
+<div class="flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-blue-400">142ms</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Avg Latency</span>
+</div>
+</div>
+</section>
+
+<!-- System Icons Grid -->
+<section class="mt-2xl space-y-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-surface text-center">Core Marketplace System Icons</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-md">
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-blue-400 text-2xl">storefront</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Marketplace</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-emerald-400 text-2xl">account_balance_wallet</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Wallet</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-purple-400 text-2xl">publish</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Publish</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-amber-400 text-2xl">analytics</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Analytics</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-cyan-400 text-2xl">verified_user</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Trust</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-rose-400 text-2xl">terminal</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Execution</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-green-400 text-2xl">payments</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Payment</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-indigo-400 text-2xl">hub</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Blockchain</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-sky-400 text-2xl">router</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Router</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-fuchsia-400 text-2xl">smart_toy</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Agent</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-teal-400 text-2xl">category</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Categories</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-orange-400 text-2xl">receipt_long</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Transactions</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-yellow-400 text-2xl">rate_review</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Reviews</span>
+    </div>
+    <div class="card-surface p-md rounded flex flex-col items-center text-center gap-xs">
+        <span class="material-symbols-outlined text-blue-400 text-2xl">dashboard</span>
+        <span class="font-label-md text-xs text-on-surface font-bold">Dashboard</span>
+    </div>
+</div>
+</section>
+
+<!-- Featured 20 Agents Showcase -->
+<section class="mt-2xl space-y-lg">
+<div class="flex justify-between items-center">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface">Top Verified Agents</h2>
+    <a href="../index.html" class="text-primary hover:underline text-sm">View all 20 agents →</a>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+    <!-- Card 1 -->
+    <div class="card-surface rounded-lg p-lg flex flex-col gap-md">
+        <div class="flex justify-between items-start">
+            <div class="flex gap-md items-center">
+                <div class="w-10 h-10 rounded bg-slate-800 p-1 flex items-center justify-center">
+                    <svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#1E293B"/><path d="M12 10H24L30 16V30H12V10Z" stroke="#3B82F6" stroke-width="2" fill="none"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface">PDF Genius</h3>
+                    <p class="font-label-md text-label-md text-on-surface-variant">by DocuMind Inc</p>
+                </div>
+            </div>
+            <span class="text-emerald-400 font-code-sm text-xs">99.9% Trust</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Neural document parser with OCR, contract summary, and multi-language PDF synthesis.</p>
+        <div class="flex justify-between text-xs font-code-sm text-outline pt-sm border-t border-outline-variant">
+            <span>Rating: <strong class="text-tertiary-fixed-dim">★ 4.9</strong></span>
+            <span>Price: <strong class="text-on-surface">$0.002/pg</strong></span>
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card-surface rounded-lg p-lg flex flex-col gap-md">
+        <div class="flex justify-between items-start">
+            <div class="flex gap-md items-center">
+                <div class="w-10 h-10 rounded bg-red-950 p-1 flex items-center justify-center">
+                    <svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#450A0A"/><path d="M14 15L9 20L14 25M26 15L31 20L26 25" stroke="#EF4444" stroke-width="2.5" fill="none"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface">CodeAudit</h3>
+                    <p class="font-label-md text-label-md text-on-surface-variant">by CyberGuard AI</p>
+                </div>
+            </div>
+            <span class="text-emerald-400 font-code-sm text-xs">99.9% Trust</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Static code vulnerability scanner detecting reentrancy bugs, buffer overflows, and secret leaks.</p>
+        <div class="flex justify-between text-xs font-code-sm text-outline pt-sm border-t border-outline-variant">
+            <span>Rating: <strong class="text-tertiary-fixed-dim">★ 4.92</strong></span>
+            <span>Price: <strong class="text-on-surface">$0.005/file</strong></span>
+        </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card-surface rounded-lg p-lg flex flex-col gap-md">
+        <div class="flex justify-between items-start">
+            <div class="flex gap-md items-center">
+                <div class="w-10 h-10 rounded bg-sky-950 p-1 flex items-center justify-center">
+                    <svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#0C4A6E"/><path d="M20 8L30 13V21C30 26.5 25.7 31.7 20 33C14.3 31.7 10 26.5 10 21V13L20 8Z" fill="#0284C7"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-headline-md text-headline-md text-on-surface">PromptShield</h3>
+                    <p class="font-label-md text-label-md text-on-surface-variant">by Aegis Security</p>
+                </div>
+            </div>
+            <span class="text-emerald-400 font-code-sm text-xs">100% Trust</span>
+        </div>
+        <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Enterprise firewall protecting LLMs against prompt injection, jailbreaks, and data exfiltration.</p>
+        <div class="flex justify-between text-xs font-code-sm text-outline pt-sm border-t border-outline-variant">
+            <span>Rating: <strong class="text-tertiary-fixed-dim">★ 4.98</strong></span>
+            <span>Price: <strong class="text-on-surface">$0.0005/req</strong></span>
+        </div>
+    </div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-xl mt-2xl">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-lg">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">NexVerse AI</span>
+<span class="text-on-surface-variant font-body-md text-body-md">© 2026 NexVerse AI. All 20 agents fully verified.</span>
+</div>
+</footer>
+</body></html>

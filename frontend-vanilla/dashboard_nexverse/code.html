@@ -1,0 +1,247 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NexVerse - Developer Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#00285d",
+                        "tertiary-container": "#df7412",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-surface-variant": "#c2c6d6",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#311400",
+                        "surface-container-high": "#2a2a2c",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "inverse-primary": "#005ac2",
+                        "secondary": "#c6c6c7",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-bright": "#39393b",
+                        "surface-variant": "#353437",
+                        "surface-container-low": "#1c1b1d",
+                        "on-tertiary-container": "#461f00",
+                        "surface-dim": "#131315",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface": "#131315",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e1e4",
+                        "on-primary-fixed": "#001a42",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#353437",
+                        "on-tertiary": "#502400",
+                        "on-secondary": "#2f3131",
+                        "surface-tint": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e1e4",
+                        "secondary-container": "#454747",
+                        "on-secondary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface": "#e5e1e4",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary": "#ffb786",
+                        "inverse-on-surface": "#313032",
+                        "on-error": "#690005",
+                        "surface-container": "#201f22",
+                        "background": "#131315",
+                        "outline": "#8c909f",
+                        "error": "#ffb4ab",
+                        "on-primary": "#002e6a",
+                        "outline-variant": "#424754",
+                        "primary-container": "#4d8eff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "40px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "2xl": "64px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "code-sm": ["Geist Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #09090B; color: #e5e1e4; font-family: 'Geist', sans-serif; }
+        .card-surface { background-color: #111113; border: 1px solid #27272A; border-radius: 0.5rem; padding: 1.5rem; }
+        .btn-primary { background-color: #3B82F6; color: #FAFAFA; transition: all 0.2s; }
+        .btn-primary:hover { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden font-body-md text-body-md">
+<!-- SideNavBar (Featuring 14 Core System Icons) -->
+<aside class="flex flex-col h-screen sticky top-0 w-64 border-r border-outline-variant bg-surface-dim hidden md:flex z-40">
+<div class="p-gutter flex items-center gap-3 border-b border-outline-variant">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-md text-headline-md font-bold">N</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Developer Console</h2>
+<p class="font-label-md text-label-md text-on-surface-variant">20 AI Agents System</p>
+</div>
+</div>
+<div class="p-md">
+<a href="../index.html" class="w-full btn-primary rounded-md py-2 font-label-md text-label-md flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+    New Agent Execution
+</a>
+</div>
+<nav class="flex-1 overflow-y-auto py-2">
+<ul class="flex flex-col gap-1 px-3">
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-primary font-bold bg-surface-container-low" href="../index.html"><span class="material-symbols-outlined text-blue-400">dashboard</span> Dashboard</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-blue-400">storefront</span> Marketplace</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-emerald-400">account_balance_wallet</span> Wallet</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-purple-400">publish</span> Publish</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-amber-400">analytics</span> Analytics</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-cyan-400">verified_user</span> Trust Engine</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-rose-400">terminal</span> Execution</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-green-400">payments</span> Payment</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-indigo-400">hub</span> Blockchain</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-sky-400">router</span> Router</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-fuchsia-400">smart_toy</span> Agent Suite</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-teal-400">category</span> Categories</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-orange-400">receipt_long</span> Transactions</a></li>
+<li><a class="flex items-center gap-3 px-3 py-1.5 rounded-md text-on-surface-variant hover:text-white hover:bg-surface-container-high" href="../index.html"><span class="material-symbols-outlined text-yellow-400">rate_review</span> Reviews</a></li>
+</ul>
+</nav>
+</aside>
+
+<!-- Main Dashboard Canvas -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto relative">
+<div class="max-w-container-max mx-auto w-full p-md md:p-gutter lg:px-xl space-y-xl pb-2xl">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mt-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">System Dashboard</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Overview of all 20 active AI agents, trust scores, and transaction telemetry.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="px-3 py-1.5 rounded-md bg-[#18181B] border border-[#27272A] flex items-center gap-2 text-on-surface font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        20 / 20 Agents Online
+</div>
+</div>
+</div>
+
+<!-- Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="card-surface flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Total Revenue</span>
+<div class="font-display-lg text-display-lg text-on-surface mt-2">$42,890.50</div>
+<span class="text-xs text-emerald-400 font-code-sm mt-1">↑ +18.4% this week</span>
+</div>
+<div class="card-surface flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Total Executions</span>
+<div class="font-display-lg text-display-lg text-on-surface mt-2">1,482,910</div>
+<span class="text-xs text-blue-400 font-code-sm mt-1">99.94% Success Rate</span>
+</div>
+<div class="card-surface flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Avg Latency</span>
+<div class="font-display-lg text-display-lg text-on-surface mt-2">142 ms</div>
+<span class="text-xs text-purple-400 font-code-sm mt-1">Sub-second Routing</span>
+</div>
+<div class="card-surface flex flex-col justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Avg Trust Score</span>
+<div class="font-display-lg text-display-lg text-emerald-400 mt-2">99.1%</div>
+<span class="text-xs text-amber-400 font-code-sm mt-1">ZK-Verified Ledger</span>
+</div>
+</div>
+
+<!-- Active Agents Table -->
+<div class="card-surface overflow-hidden">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">20 AI Agents System Directory</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse font-code-sm text-xs">
+<thead>
+<tr class="border-b border-outline-variant text-outline">
+<th class="py-2 px-3">AGENT NAME</th>
+<th class="py-2 px-3">COMPANY / PROVIDER</th>
+<th class="py-2 px-3">RATING</th>
+<th class="py-2 px-3">TRUST SCORE</th>
+<th class="py-2 px-3">LATENCY</th>
+<th class="py-2 px-3">PRICING</th>
+<th class="py-2 px-3 text-right">ACTION</th>
+</tr>
+</thead>
+<tbody id="agent-table-body" class="divide-y divide-outline-variant/40 text-on-surface">
+<!-- Populated via JS -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+
+<script>
+    const agents = [
+        { name: "PDF Genius", provider: "DocuMind Inc", company: "DocuMind Systems", rating: "4.9", trust: "99.9%", latency: "120ms", price: "$0.002 / page" },
+        { name: "LogoForge AI", provider: "BrandCraft Studio", company: "BrandCraft Labs", rating: "4.8", trust: "98.7%", latency: "850ms", price: "$0.05 / logo" },
+        { name: "VisionOCR", provider: "NeuralEye AI Labs", company: "NeuralEye Tech", rating: "4.9", trust: "99.8%", latency: "45ms", price: "$0.001 / req" },
+        { name: "LegalMind", provider: "JurisTech Global", company: "JurisAI Systems", rating: "4.95", trust: "100%", latency: "320ms", price: "$0.08 / query" },
+        { name: "FinanceGPT", provider: "QuantEdge Capital", company: "QuantEdge Intelligence", rating: "4.9", trust: "99.6%", latency: "95ms", price: "$0.01 / analysis" },
+        { name: "DeepResearch", provider: "OpenCognition Org", company: "Cognition Labs", rating: "4.85", trust: "99.4%", latency: "1.4s", price: "$0.03 / report" },
+        { name: "SlideMaker", provider: "DeckCraft Solutions", company: "DeckCraft AI", rating: "4.75", trust: "97.9%", latency: "650ms", price: "$0.04 / deck" },
+        { name: "CodeAudit", provider: "CyberGuard AI", company: "CyberGuard Security", rating: "4.92", trust: "99.9%", latency: "180ms", price: "$0.005 / file" },
+        { name: "PromptShield", provider: "Aegis Security", company: "Aegis Safety Networks", rating: "4.98", trust: "100%", latency: "15ms", price: "$0.0005 / req" },
+        { name: "VoiceSmith", provider: "AudioPhonics Lab", company: "AudioPhonics AI", rating: "4.8", trust: "98.5%", latency: "210ms", price: "$0.003 / sec" },
+        { name: "Insight AI", provider: "Apex Analytics", company: "Apex Analytics Corp", rating: "4.88", trust: "99.2%", latency: "290ms", price: "$0.015 / batch" },
+        { name: "AutoScraper", provider: "MeshCrawler Systems", company: "MeshCrawler Tech", rating: "4.7", trust: "96.8%", latency: "380ms", price: "$0.002 / page" },
+        { name: "NewsSynth", provider: "MediaStream Inc", company: "MediaStream Intelligence", rating: "4.65", trust: "97.2%", latency: "140ms", price: "$0.004 / feed" },
+        { name: "MedAssist", provider: "BioHealth Tech", company: "BioHealth AI Systems", rating: "4.96", trust: "99.9%", latency: "190ms", price: "$0.025 / query" },
+        { name: "TaxPilot", provider: "FiscalLogic Inc", company: "FiscalLogic Global", rating: "4.89", trust: "99.7%", latency: "420ms", price: "$0.05 / return" },
+        { name: "SEOBoost", provider: "RankPulse Media", company: "RankPulse AI", rating: "4.78", trust: "98.1%", latency: "160ms", price: "$0.008 / URL" },
+        { name: "ChatFlow", provider: "ConversaCore Labs", company: "ConversaCore Systems", rating: "4.82", trust: "99.0%", latency: "60ms", price: "$0.001 / msg" },
+        { name: "MailWriter", provider: "OutboundPro AI", company: "OutboundPro Tech", rating: "4.72", trust: "97.5%", latency: "110ms", price: "$0.002 / email" },
+        { name: "ImageSense", provider: "PixelMind Labs", company: "PixelMind Vision", rating: "4.91", trust: "99.5%", latency: "130ms", price: "$0.006 / img" },
+        { name: "DeployBot", provider: "InfraOps Cloud", company: "InfraOps Automations", rating: "4.94", trust: "99.9%", latency: "90ms", price: "$0.02 / deploy" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const tbody = document.getElementById("agent-table-body");
+        tbody.innerHTML = "";
+        agents.forEach(a => {
+            const tr = document.createElement("tr");
+            tr.className = "hover:bg-surface-container-high/50 transition-colors";
+            tr.innerHTML = `
+                <td class="py-2.5 px-3 font-bold text-on-surface">${a.name}</td>
+                <td class="py-2.5 px-3 text-on-surface-variant">${a.company} (${a.provider})</td>
+                <td class="py-2.5 px-3 text-tertiary-fixed-dim font-bold">★ ${a.rating}</td>
+                <td class="py-2.5 px-3 text-primary font-bold">${a.trust}</td>
+                <td class="py-2.5 px-3 text-on-surface">${a.latency}</td>
+                <td class="py-2.5 px-3 text-on-surface font-bold">${a.price}</td>
+                <td class="py-2.5 px-3 text-right">
+                    <a href="../index.html" class="btn-primary px-2.5 py-1 rounded text-[11px] font-bold inline-block">Execute</a>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    });
+</script>
+</body></html>

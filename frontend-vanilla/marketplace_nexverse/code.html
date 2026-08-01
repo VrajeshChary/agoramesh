@@ -1,0 +1,310 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NexVerse Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary": "#adc6ff",
+                        "on-primary-container": "#00285d",
+                        "tertiary-container": "#df7412",
+                        "primary-fixed": "#d8e2ff",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-surface-variant": "#c2c6d6",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-tertiary-fixed": "#311400",
+                        "surface-container-high": "#2a2a2c",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "inverse-primary": "#005ac2",
+                        "secondary": "#c6c6c7",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-bright": "#39393b",
+                        "surface-variant": "#353437",
+                        "surface-container-low": "#1c1b1d",
+                        "on-tertiary-container": "#461f00",
+                        "surface-dim": "#131315",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface": "#131315",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e5e1e4",
+                        "on-primary-fixed": "#001a42",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-highest": "#353437",
+                        "on-tertiary": "#502400",
+                        "on-secondary": "#2f3131",
+                        "surface-tint": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e1e4",
+                        "secondary-container": "#454747",
+                        "on-secondary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-surface": "#e5e1e4",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary": "#ffb786",
+                        "inverse-on-surface": "#313032",
+                        "on-error": "#690005",
+                        "surface-container": "#201f22",
+                        "background": "#131315",
+                        "outline": "#8c909f",
+                        "error": "#ffb4ab",
+                        "on-primary": "#002e6a",
+                        "outline-variant": "#424754",
+                        "primary-container": "#4d8eff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "40px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "2xl": "64px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "code-sm": ["Geist Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #09090B; color: #e5e1e4; font-family: 'Geist', sans-serif; }
+        .agent-card { background-color: #111113; border: 1px solid #27272A; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .agent-card:hover { transform: translateY(-3px) scale(1.008); border-color: #3B82F6; box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.25); }
+        .btn-primary { background-color: #3B82F6; color: #FAFAFA; transition: all 0.2s; }
+        .btn-primary:hover { box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); transform: scale(0.98); }
+        .btn-secondary { background-color: #18181B; border: 1px solid #27272A; }
+        .btn-secondary:hover { background-color: #27272A; }
+        .input-field { background-color: #09090B; border: 1px solid #27272A; }
+        .input-field:focus-within { border-color: #3B82F6; box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        .chip { background-color: #18181B; border: 1px solid #27272A; transition: all 0.2s; }
+        .chip:hover, .chip.active { background-color: #27272A; border-color: #3B82F6; color: #3B82F6; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant dark:border-outline-variant z-50">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<a href="../index.html" class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-2">
+    <div class="w-8 h-8 rounded bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white"><span class="material-symbols-outlined text-[20px]">hub</span></div>
+    NexVerse
+</a>
+<div class="hidden md:flex gap-lg items-center text-sm font-medium">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 flex items-center gap-1.5" href="../index.html"><span class="material-symbols-outlined text-[18px]">storefront</span> Marketplace</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5" href="../dashboard_nexverse/code.html"><span class="material-symbols-outlined text-[18px]">dashboard</span> Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5" href="../execute_agent_nexverse/code.html"><span class="material-symbols-outlined text-[18px]">terminal</span> Execution</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1.5" href="../nexverse_ai_agent_platform/code.html"><span class="material-symbols-outlined text-[18px]">account_balance_wallet</span> Wallet</a>
+</div>
+</div>
+<a href="../index.html" class="btn-primary px-md py-sm rounded font-label-md text-label-md font-bold transition-all">Launch App</a>
+</div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-1 mt-[64px] px-md md:px-gutter max-w-container-max mx-auto w-full py-xl md:py-2xl flex flex-col gap-xl">
+<!-- Header & Command Palette -->
+<header class="flex flex-col items-center justify-center text-center gap-md py-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-mono">
+    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span> 20 AI Agents Verified & Active
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface">Discover AI Agents</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Find, integrate, and deploy elite autonomous AI agents with transparent pricing, sub-millisecond latency, and cryptographic trust.</p>
+<div class="w-full max-w-3xl mt-lg relative group">
+<div class="input-field rounded-lg flex items-center px-md py-sm w-full transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant mr-md text-[20px]">search</span>
+<input id="search-input" onkeyup="filterAgents()" autocomplete="off" class="bg-transparent border-none outline-none flex-1 text-on-surface placeholder:text-outline w-full focus:ring-0 font-code-sm text-code-sm" placeholder="Search for PDF Genius, CodeAudit, LegalMind, VisionOCR..." type="text">
+<div class="flex items-center gap-xs text-outline bg-surface-container-low px-sm py-xs rounded text-[10px] font-code-sm">
+<span>⌘</span><span>K</span>
+</div>
+</div>
+</div>
+</header>
+
+<!-- 14 Icons System Bar -->
+<section class="border-y border-outline-variant py-md overflow-x-auto">
+<div class="flex items-center gap-md min-w-max">
+<span class="font-code-sm text-[11px] text-outline uppercase tracking-wider pr-md border-r border-outline-variant">System Matrix:</span>
+<div class="flex items-center gap-sm">
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-primary cursor-pointer"><span class="material-symbols-outlined text-[16px]">storefront</span> Marketplace</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-emerald-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">account_balance_wallet</span> Wallet</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-purple-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">publish</span> Publish</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-amber-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">analytics</span> Analytics</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-cyan-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">verified_user</span> Trust</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-rose-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">terminal</span> Execution</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-green-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">payments</span> Payment</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-indigo-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">hub</span> Blockchain</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-sky-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">router</span> Router</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-fuchsia-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">smart_toy</span> Agent</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-teal-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">category</span> Categories</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-orange-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">receipt_long</span> Transactions</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-yellow-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">rate_review</span> Reviews</span>
+    <span class="chip px-md py-xs rounded flex items-center gap-xs text-code-sm text-blue-400 cursor-pointer"><span class="material-symbols-outlined text-[16px]">dashboard</span> Dashboard</span>
+</div>
+</div>
+</section>
+
+<!-- Filters & Sorting -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md border-b border-outline-variant pb-md">
+<div class="flex flex-wrap gap-sm" id="cat-filters">
+<button onclick="setCategory('All')" class="chip active px-md py-xs rounded-full font-label-md text-label-md text-on-surface">All (20)</button>
+<button onclick="setCategory('Document AI')" class="chip px-md py-xs rounded-full font-label-md text-label-md text-on-surface">Document AI</button>
+<button onclick="setCategory('Computer Vision')" class="chip px-md py-xs rounded-full font-label-md text-label-md text-on-surface">Computer Vision</button>
+<button onclick="setCategory('Finance & Trading')" class="chip px-md py-xs rounded-full font-label-md text-label-md text-on-surface">Finance</button>
+<button onclick="setCategory('Developer Tools')" class="chip px-md py-xs rounded-full font-label-md text-label-md text-on-surface">Dev Tools</button>
+<button onclick="setCategory('AI Safety')" class="chip px-md py-xs rounded-full font-label-md text-label-md text-on-surface">AI Safety</button>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Sort by:</span>
+<select id="sort-sel" onchange="filterAgents()" class="bg-surface-dim border border-outline-variant text-on-surface text-body-md rounded-md py-xs pl-sm pr-lg focus:ring-primary focus:border-primary">
+<option value="relevant">Most Relevant</option>
+<option value="rating">Highest Rated</option>
+<option value="trust">Highest Trust</option>
+<option value="latency">Lowest Latency</option>
+</select>
+</div>
+</section>
+
+<!-- Grid of 20 Agent Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" id="agents-grid">
+<!-- Rendered via JS -->
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-xl border-t border-outline-variant bg-surface-container-lowest mt-auto">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+    <div class="w-6 h-6 rounded bg-blue-500 flex items-center justify-center text-white text-xs"><span class="material-symbols-outlined text-[14px]">hub</span></div>
+    NexVerse AI
+</div>
+<div class="text-on-surface-variant font-body-md text-body-md text-center md:text-left">© 2026 NexVerse AI. 20 Agents Verified & Live.</div>
+<div class="flex flex-wrap gap-md justify-center text-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../index.html">Main App</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../dashboard_nexverse/code.html">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="../execute_agent_nexverse/code.html">Execution</a>
+</div>
+</div>
+</footer>
+
+<script>
+    const agents = [
+        { name: "PDF Genius", provider: "DocuMind Inc", company: "DocuMind Systems", rating: "4.9 (2.4k)", trust: "99.9%", latency: "120ms avg", price: "$0.002 / page", category: "Document AI", desc: "Neural document parser with OCR, tabular data extraction, contract summary, and multi-language PDF synthesis.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#1E293B"/><path d="M12 10H24L30 16V30H12V10Z" stroke="#3B82F6" stroke-width="2" fill="none"/><path d="M24 10V16H30" stroke="#3B82F6" stroke-width="2" fill="none"/><line x1="16" y1="22" x2="24" y2="22" stroke="#60A5FA" stroke-width="2"/></svg>` },
+        { name: "LogoForge AI", provider: "BrandCraft Studio", company: "BrandCraft Labs", rating: "4.8 (1.8k)", trust: "98.7%", latency: "850ms avg", price: "$0.05 / logo", category: "Generative Design", desc: "Autonomous vector logo synthesis engine generating high-resolution scalable SVG brand assets and guidelines.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#2E1065"/><path d="M12 28L20 12L28 28H22L20 22L18 28H12Z" fill="#F97316"/></svg>` },
+        { name: "VisionOCR", provider: "NeuralEye AI Labs", company: "NeuralEye Tech", rating: "4.9 (3.1k)", trust: "99.8%", latency: "45ms avg", price: "$0.001 / req", category: "Computer Vision", desc: "Ultra-fast edge visual detection and multi-script OCR engine processing handwriting and image streams.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#064E3B"/><circle cx="20" cy="20" r="8" stroke="#10B981" stroke-width="2" fill="none"/><circle cx="20" cy="20" r="3" fill="#34D399"/></svg>` },
+        { name: "LegalMind", provider: "JurisTech Global", company: "JurisAI Systems", rating: "4.95 (920)", trust: "100%", latency: "320ms avg", price: "$0.08 / query", category: "Governance & Legal", desc: "Regulatory compliance analysis agent scanning contracts, NDAs, and terms of service for legal risks.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#451A03"/><path d="M20 9L10 14V22C10 27.5 14.3 32.7 20 34C25.7 32.7 30 27.5 30 22V14L20 9Z" stroke="#F59E0B" stroke-width="2" fill="none"/></svg>` },
+        { name: "FinanceGPT", provider: "QuantEdge Capital", company: "QuantEdge Intelligence", rating: "4.9 (4.5k)", trust: "99.6%", latency: "95ms avg", price: "$0.01 / analysis", category: "Finance & Trading", desc: "Real-time financial sentiment parser, SEC filing analyzer, algorithmic risk evaluator, and yield predictor.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#0C4A6E"/><path d="M10 28L17 20L23 24L30 14" stroke="#38BDF8" stroke-width="2.5" fill="none"/></svg>` },
+        { name: "DeepResearch", provider: "OpenCognition Org", company: "Cognition Labs", rating: "4.85 (5.2k)", trust: "99.4%", latency: "1.4s avg", price: "$0.03 / report", category: "Research & Knowledge", desc: "Autonomous multi-hop internet researcher synthesizing academic papers into structured executive briefs.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#311042"/><ellipse cx="20" cy="20" rx="12" ry="5" stroke="#C084FC" stroke-width="2" fill="none" transform="rotate(-30 20 20)"/></svg>` },
+        { name: "SlideMaker", provider: "DeckCraft Solutions", company: "DeckCraft AI", rating: "4.75 (1.1k)", trust: "97.9%", latency: "650ms avg", price: "$0.04 / deck", category: "Generative Design", desc: "Converts raw markdown notes, product specs, or data sheets into pitch decks and slide layouts.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#4C0519"/><rect x="12" y="14" width="16" height="12" rx="2" stroke="#F43F5E" stroke-width="2" fill="none"/></svg>` },
+        { name: "CodeAudit", provider: "CyberGuard AI", company: "CyberGuard Security", rating: "4.92 (2.9k)", trust: "99.9%", latency: "180ms avg", price: "$0.005 / file", category: "Developer Tools", desc: "Static vulnerability scanner detecting reentrancy bugs, secret leaks, and logic flaws across 15+ languages.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#450A0A"/><path d="M14 15L9 20L14 25M26 15L31 20L26 25" stroke="#EF4444" stroke-width="2.5" fill="none"/></svg>` },
+        { name: "PromptShield", provider: "Aegis Security", company: "Aegis Safety Networks", rating: "4.98 (6.1k)", trust: "100%", latency: "15ms avg", price: "$0.0005 / req", category: "AI Safety", desc: "Enterprise firewall protecting LLMs against prompt injection, jailbreaks, and toxic payload exfiltration.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#0C4A6E"/><path d="M20 8L30 13V21C30 26.5 25.7 31.7 20 33C14.3 31.7 10 26.5 10 21V13L20 8Z" fill="#0284C7"/></svg>` },
+        { name: "VoiceSmith", provider: "AudioPhonics Lab", company: "AudioPhonics AI", rating: "4.8 (1.4k)", trust: "98.5%", latency: "210ms avg", price: "$0.003 / sec", category: "Audio & Speech", desc: "Neural voice synthesis & instant voice cloning agent providing ultra-realistic multilingual text-to-speech.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#3B0764"/><line x1="17" y1="14" x2="17" y2="26" stroke="#E879F9" stroke-width="4"/><line x1="22" y1="10" x2="22" y2="30" stroke="#E879F9" stroke-width="4"/></svg>` },
+        { name: "Insight AI", provider: "Apex Analytics", company: "Apex Analytics Corp", rating: "4.88 (3.8k)", trust: "99.2%", latency: "290ms avg", price: "$0.015 / batch", category: "Business Intelligence", desc: "Telemetry anomaly detector uncovering hidden user churn drivers and behavioral trends from clickstreams.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#134E4A"/><circle cx="20" cy="20" r="10" stroke="#2DD4BF" stroke-width="2" fill="none"/></svg>` },
+        { name: "AutoScraper", provider: "MeshCrawler Systems", company: "MeshCrawler Tech", rating: "4.7 (4.1k)", trust: "96.8%", latency: "380ms avg", price: "$0.002 / page", category: "Web Automation", desc: "Resilient headless crawler agent extracting dynamic JavaScript DOM structures and outputting JSON.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#431407"/><rect x="12" y="12" width="16" height="16" stroke="#F97316" stroke-width="2" fill="none"/></svg>` },
+        { name: "NewsSynth", provider: "MediaStream Inc", company: "MediaStream Intelligence", rating: "4.65 (950)", trust: "97.2%", latency: "140ms avg", price: "$0.004 / feed", category: "Content Generation", desc: "Real-time global media aggregator filtering noise, detecting bias, and compiling news roundups.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#1E1B4B"/><rect x="10" y="10" width="20" height="20" stroke="#6366F1" stroke-width="2" fill="none"/></svg>` },
+        { name: "MedAssist", provider: "BioHealth Tech", company: "BioHealth AI Systems", rating: "4.96 (1.7k)", trust: "99.9%", latency: "190ms avg", price: "$0.025 / query", category: "Medical AI", desc: "Clinical decision support agent trained on medical literature assisting physicians with ICD-10 coding.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#064E3B"/><path d="M17 10H23V17H30V23H23V30H17V23H10V17H17V10Z" fill="#10B981"/></svg>` },
+        { name: "TaxPilot", provider: "FiscalLogic Inc", company: "FiscalLogic Global", rating: "4.89 (2.2k)", trust: "99.7%", latency: "420ms avg", price: "$0.05 / return", category: "Finance & Trading", desc: "Multi-jurisdictional tax optimizer computing crypto capital gains, VAT deductions, and compliance.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#713F12"/><circle cx="20" cy="20" r="9" stroke="#EAB308" stroke-width="2" fill="none"/></svg>` },
+        { name: "SEOBoost", provider: "RankPulse Media", company: "RankPulse AI", rating: "4.78 (3.3k)", trust: "98.1%", latency: "160ms avg", price: "$0.008 / URL", category: "Marketing", desc: "Keyword gap analyzer, schema markup generator, and backlink audit agent optimized for Google SGE.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#14532D"/><path d="M10 28L18 20L24 24L30 12" stroke="#22C55E" stroke-width="2.5" fill="none"/></svg>` },
+        { name: "ChatFlow", provider: "ConversaCore Labs", company: "ConversaCore Systems", rating: "4.82 (5.9k)", trust: "99.0%", latency: "60ms avg", price: "$0.001 / msg", category: "Conversational AI", desc: "Low-latency multi-modal chatbot supporting long-memory retention, function calling, and live CRM sync.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#164E63"/><path d="M12 14C12 11.8 13.8 10 16 10H24V22H18L13 26V22H16V14Z" stroke="#06B6D4" stroke-width="2" fill="none"/></svg>` },
+        { name: "MailWriter", provider: "OutboundPro AI", company: "OutboundPro Tech", rating: "4.72 (1.9k)", trust: "97.5%", latency: "110ms avg", price: "$0.002 / email", category: "Sales & Outreach", desc: "Cold outreach and support response writer crafting personalized emails based on recipient profiles.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#581C87"/><rect x="10" y="13" width="20" height="14" stroke="#C084FC" stroke-width="2" fill="none"/></svg>` },
+        { name: "ImageSense", provider: "PixelMind Labs", company: "PixelMind Vision", rating: "4.91 (4.8k)", trust: "99.5%", latency: "130ms avg", price: "$0.006 / img", category: "Computer Vision", desc: "Automated image tagger, background remover, product photo enhancer, and NSFW safety moderation agent.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#831843"/><circle cx="20" cy="20" r="9" stroke="#F43F5E" stroke-width="2" fill="none"/></svg>` },
+        { name: "DeployBot", provider: "InfraOps Cloud", company: "InfraOps Automations", rating: "4.94 (3.6k)", trust: "99.9%", latency: "90ms avg", price: "$0.02 / deploy", category: "Developer Tools", desc: "Autonomous Kubernetes & Terraform deployment agent setting up zero-downtime CI/CD pipelines.", logo: `<svg viewBox="0 0 40 40" class="w-full h-full"><rect width="40" height="40" rx="8" fill="#0C4A6E"/><rect x="11" y="11" width="18" height="6" stroke="#38BDF8" stroke-width="1.5" fill="none"/></svg>` }
+    ];
+
+    let selectedCategory = "All";
+
+    function renderList(list) {
+        const grid = document.getElementById("agents-grid");
+        grid.innerHTML = "";
+        list.forEach(a => {
+            const card = document.createElement("article");
+            card.className = "agent-card rounded-lg p-lg flex flex-col gap-md cursor-pointer";
+            card.onclick = () => window.location.href = "../index.html";
+            card.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div class="flex gap-md items-center">
+                        <div class="w-12 h-12 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center p-1">
+                            ${a.logo}
+                        </div>
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface leading-tight">${a.name}</h3>
+                            <p class="font-label-md text-label-md text-on-surface-variant">by ${a.provider}</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-code-sm px-2 py-0.5 rounded bg-surface-container-high text-outline">${a.category}</span>
+                </div>
+                <p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mt-xs">${a.desc}</p>
+                <div class="grid grid-cols-2 gap-sm mt-auto pt-md border-t border-outline-variant/50">
+                    <div class="flex flex-col gap-xs">
+                        <span class="font-label-md text-label-md text-outline">Rating</span>
+                        <span class="font-code-sm text-code-sm text-tertiary-fixed-dim">★ ${a.rating}</span>
+                    </div>
+                    <div class="flex flex-col gap-xs">
+                        <span class="font-label-md text-label-md text-outline">Trust Score</span>
+                        <span class="font-code-sm text-code-sm text-primary">${a.trust}</span>
+                    </div>
+                    <div class="flex flex-col gap-xs">
+                        <span class="font-label-md text-label-md text-outline">Latency</span>
+                        <span class="font-code-sm text-code-sm text-on-surface">${a.latency}</span>
+                    </div>
+                    <div class="flex flex-col gap-xs">
+                        <span class="font-label-md text-label-md text-outline">Pricing</span>
+                        <span class="font-code-sm text-code-sm text-on-surface">${a.price}</span>
+                    </div>
+                </div>
+                <div class="flex gap-sm mt-sm">
+                    <a href="../index.html" class="btn-primary flex-1 py-sm rounded font-label-md text-label-md font-bold transition-all flex items-center justify-center gap-xs">
+                        <span class="material-symbols-outlined text-[16px]">play_arrow</span> Execute
+                    </a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function setCategory(cat) {
+        selectedCategory = cat;
+        document.querySelectorAll("#cat-filters button").forEach(b => {
+            b.className = b.innerText.includes(cat) ? "chip active px-md py-xs rounded-full font-label-md text-label-md text-on-surface" : "chip px-md py-xs rounded-full font-label-md text-label-md text-on-surface";
+        });
+        filterAgents();
+    }
+
+    function filterAgents() {
+        const q = document.getElementById("search-input").value.toLowerCase();
+        const filtered = agents.filter(a => {
+            const matchCat = selectedCategory === "All" || a.category === selectedCategory;
+            const matchQ = a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.provider.toLowerCase().includes(q);
+            return matchCat && matchQ;
+        });
+        renderList(filtered);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => renderList(agents));
+</script>
+</body></html>
