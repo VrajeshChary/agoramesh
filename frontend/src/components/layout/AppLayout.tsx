@@ -57,7 +57,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children, activeTab, onTab
           animate={{ opacity: 1, filter: 'blur(0px)' }}
           exit={{ opacity: 0, filter: 'blur(10px)' }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="min-h-screen w-full relative z-10 pt-32 px-8 max-w-7xl mx-auto"
+          className="min-h-screen w-full relative z-10 pt-48 px-8 max-w-7xl mx-auto"
         >
           {children}
         </motion.div>
