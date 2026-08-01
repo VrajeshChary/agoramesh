@@ -50,6 +50,10 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children, activeTab, onTab
       <SystemStatusBar />
       <UniversalSearch isOpen={searchOpen} onClose={() => setSearchOpen(false)} onTabChange={onTabChange} />
 
+      {/* Scroll Masks for smooth fading of content */}
+      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-background via-background/80 to-transparent z-20 pointer-events-none" />
+      <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-20 pointer-events-none" />
+
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
@@ -57,7 +61,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children, activeTab, onTab
           animate={{ opacity: 1, filter: 'blur(0px)' }}
           exit={{ opacity: 0, filter: 'blur(10px)' }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="min-h-screen w-full relative z-10 pt-48 px-8 max-w-7xl mx-auto"
+          className="min-h-screen w-full relative z-10 pt-48 pb-32 px-8 max-w-7xl mx-auto"
         >
           {children}
         </motion.div>

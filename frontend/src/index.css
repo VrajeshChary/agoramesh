@@ -29,7 +29,7 @@
   }
 
   .number-font {
-    @apply font-mono tracking-tight;
+    @apply font-mono;
   }
   
   .magnetic-btn {
