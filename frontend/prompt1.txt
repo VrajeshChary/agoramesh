@@ -1,0 +1,714 @@
+<USER_REQUEST>
+AgoraMesh OS v3 — Premium Hackathon UI Overhaul
+
+You are the world's best product designer, senior frontend engineer, motion designer, and UI/UX architect.
+
+Activate every available expert agent:
+
+ui/ux-maxxing
+codemaxxing
+frontend-maxxing
+animation-maxxing
+framer-motion specialist
+typography specialist
+interaction designer
+accessibility reviewer
+design systems architect
+performance optimizer
+
+Your task is NOT to redesign the project.
+
+Your task is to take the existing AgoraMesh frontend and evolve it into a premium operating system experience while preserving the current layout and functionality.
+
+Do NOT rewrite the project.
+
+Do NOT replace components unless necessary.
+
+Upgrade every existing component.
+
+Project
+
+AgoraMesh
+
+A decentralized marketplace for AI microservices.
+
+Users can:
+
+discover AI agents
+connect Algorand wallet
+pay using x402
+execute AI
+receive streamed AI response
+execution stored on blockchain
+execution history
+developer SDK
+analytics
+trust engine
+
+Think of it as
+
+Apple App Store
+
+Stripe
+
+Cursor AI
+
+Linear
+
+Raycast
+
+Vercel Dashboard
+
+combined into one AI Marketplace.
+
+NOT crypto.
+
+NOT gaming.
+
+NOT Web3 looking.
+
+Professional.
+
+Elegant.
+
+Timeless.
+
+Overall Design Philosophy
+
+Minimal.
+
+Luxury.
+
+Premium.
+
+Editorial.
+
+Cinematic.
+
+Apple-level polish.
+
+Linear-level simplicity.
+
+Stripe-level clarity.
+
+Cursor-level interactions.
+
+Nothing should feel cheap.
+
+Nothing should feel template-like.
+
+Every animation must have purpose.
+
+Colors
+
+Primary background
+
+#07070A
+
+Cards
+
+#101014
+
+Borders
+
+rgba(255,255,255,0.08)
+
+Text
+
+White
+
+Secondary text
+
+#9ca3af
+
+Accent
+
+Blue
+
+#3B82F6
+
+Purple
+
+#8B5CF6
+
+Emerald
+
+#10B981
+
+Gold
+
+#FBBF24
+
+NO rainbow gradients.
+
+NO neon RGB.
+
+NO cyberpunk.
+
+Typography
+
+Headings
+
+Geist
+
+Body
+
+Inter
+
+Monospace
+
+IBM Plex Mono
+
+Hero text should feel like Apple keynote typography.
+
+Huge.
+
+Bold.
+
+Beautiful spacing.
+
+Perfect kerning.
+
+Hero Section
+
+Current hero is good.
+
+Make it unforgettable.
+
+Keep the same layout.
+
+Improve it dramatically.
+
+Requirements:
+
+Animated aurora background
+
+Very subtle.
+
+Animated particles.
+
+Tiny moving AI network nodes.
+
+Depth.
+
+Glass lighting.
+
+Noise texture.
+
+Gradient text only on
+
+Autonomous AI
+
+NOT entire title.
+
+Right side should become
+
+LIVE SYSTEM STATUS PANEL
+
+Showing
+
+Network TPS
+
+Marketplace Volume
+
+Active Agents
+
+Today's Executions
+
+Wallet Status
+
+OpenRouter Status
+
+Algorand Status
+
+Everything should animate smoothly.
+
+Numbers count upward.
+
+Cards gently float.
+
+Navigation
+
+Current navbar is good.
+
+Improve:
+
+Glass morphism
+
+Blur
+
+Floating
+
+Hover glow
+
+Animated underline
+
+Spring animation
+
+Connect Wallet button should pulse subtly.
+
+After wallet connection
+
+Replace button with
+
+Wallet Avatar
+
+Short Address
+
+Balance
+
+Green status dot
+
+Marketplace
+
+Current cards stay.
+
+Upgrade every interaction.
+
+Hover
+
+Lift
+
+Glow
+
+Border animation
+
+Icon animation
+
+Trust score animation
+
+Latency animation
+
+Execute button slides upward
+
+Cards should feel alive.
+
+Agent Cards
+
+Each category gets accent color.
+
+Finance
+
+Green
+
+Vision
+
+Cyan
+
+Research
+
+Purple
+
+Legal
+
+Gold
+
+Medical
+
+Red
+
+Automation
+
+Blue
+
+Design
+
+Pink
+
+Never overpower the interface.
+
+Very subtle.
+
+Search
+
+Upgrade into Raycast style.
+
+Ctrl + K
+
+Animated placeholder
+
+Live suggestions
+
+Blur background
+
+Keyboard navigation
+
+Command palette feeling.
+
+Categories
+
+Current horizontal list is good.
+
+Improve:
+
+Smooth scrolling
+
+Active glow
+
+Underline animation
+
+Hover elevation
+
+Icons animate
+
+Execute Flow
+
+This is the most important interaction.
+
+Make it cinematic.
+
+When Execute is clicked
+
+DO NOT instantly execute.
+
+Sequence:
+
+Initialize
+
+↓
+
+Terminal opens
+
+↓
+
+Checking wallet...
+
+↓
+
+Reading smart contract...
+
+↓
+
+Fetching price...
+
+↓
+
+Payment challenge received
+
+↓
+
+Glass payment card slides in
+
+↓
+
+User approves
+
+↓
+
+Payment verified
+
+↓
+
+Executing AI
+
+↓
+
+Streaming response
+
+↓
+
+Execution complete
+
+↓
+
+Receipt generated
+
+↓
+
+Saved on-chain
+
+Each stage animated.
+
+No loading spinners.
+
+Real progress.
+
+Cursor-style terminal.
+
+Payment Card
+
+Apple Wallet inspired.
+
+Glass.
+
+USDC amount
+
+Receiver
+
+Wallet
+
+Network
+
+Fee
+
+Approve button
+
+Reject button
+
+Micro animations
+
+Terminal
+
+Dark.
+
+Professional.
+
+Cursor AI inspired.
+
+Streaming text.
+
+Syntax highlighting.
+
+Typing effect.
+
+Live logs.
+
+Collapsible.
+
+Resizable.
+
+Smooth transitions.
+
+Dashboard Pages
+
+Every navigation item becomes its own premium workspace.
+
+Marketplace
+
+Agent grid
+
+Dashboard
+
+Platform overview
+
+Execution
+
+Terminal
+
+History
+
+Wallet
+
+Assets
+
+Transactions
+
+Balance
+
+Analytics
+
+Beautiful charts
+
+Developer SDK
+
+API examples
+
+Trust Engine
+
+Verification
+
+Scores
+
+Proofs
+
+No page should feel empty.
+
+Analytics
+
+No boring charts.
+
+Animated counters.
+
+Glass KPI cards.
+
+Interactive graphs.
+
+Timeline.
+
+Execution heatmap.
+
+Payments over time.
+
+Agent popularity.
+
+Latency graph.
+
+Revenue graph.
+
+Everything animated.
+
+Live Activity
+
+Floating activity feed.
+
+Shows
+
+Agent executed
+
+Payment received
+
+Execution completed
+
+Wallet connected
+
+Developer published
+
+Updates every few seconds.
+
+Background
+
+Keep current noise.
+
+Improve with
+
+Slow aurora
+
+Mesh gradients
+
+Tiny particles
+
+AI node connections
+
+Almost invisible movement.
+
+No distracting animation.
+
+Motion
+
+Use Framer Motion everywhere.
+
+Springs.
+
+Layout animations.
+
+Shared transitions.
+
+Fade
+
+Blur
+
+Scale
+
+Slide
+
+Physics
+
+Everything feels connected.
+
+Never abrupt.
+
+Glass Morphism
+
+Use premium glass.
+
+Backdrop blur
+
+Subtle transparency
+
+One pixel border
+
+Soft shadows
+
+Apple quality.
+
+Icons
+
+Lucide.
+
+Consistent stroke.
+
+Micro hover animation.
+
+Never oversized.
+
+Performance
+
+Maintain 60 FPS.
+
+Lazy load heavy components.
+
+Optimize motion.
+
+GPU accelerated transforms.
+
+No layout shifts.
+
+No unnecessary re-renders.
+
+Accessibility
+
+Keyboard navigation.
+
+Visible focus states.
+
+High contrast.
+
+Proper aria labels.
+
+Reduced motion support.
+
+Keep Existing Backend
+
+Do NOT modify backend.
+
+Do NOT touch
+
+FastAPI
+
+Supabase
+
+OpenRouter
+
+Algorand
+
+x402
+
+API contracts
+
+Only frontend.
+
+Preserve Existing Features
+
+Everything already implemented must continue working.
+
+Only improve visuals, UX, interactions, and motion.
+
+No regressions.
+
+Final Goal
+
+The finished product should feel like:
+
+Apple's Human Interface Guidelines
+Linear
+Stripe Dashboard
+Raycast
+Cursor AI
+Vercel
+Arc Browser
+
+It should not look like a hackathon project. It should look like a funded startup product that has been refined for years.
+
+The reaction from judges should be:
+
+"This doesn't look like a student project. This looks like a real product that's ready to launch."
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-08-01T01:00:35+05:30.
+
+The user's current state is as follows:
+Active Document: d:\Hacksmiths United\NexVerse\NexVerse-2026\frontend\tailwind.config.js (LANGUAGE_JAVASCRIPT)
+Cursor is on line: 1
+Other open documents:
+- d:\Hacksmiths United\NexVerse\NexVerse-2026\frontend\src\components\centers\DeveloperCenter.tsx (LANGUAGE_TSX)
+- d:\Hacksmiths United\NexVerse\NexVerse-2026\frontend\src\App.tsx (LANGUAGE_TSX)
+- d:\Hacksmiths United\NexVerse\NexVerse-2026\frontend\src\components\centers\TrustCenter.tsx (LANGUAGE_TSX)
+- d:\Hacksmiths United\NexVerse\NexVerse-2026\frontend\src\components\centers\AnalyticsWorkspace.tsx (LANGUAGE_TSX)
+- d:\Hacksmiths United\NexVerse\NexVerse-2026\frontend\src\components\os\FloatingNav.tsx (LANGUAGE_TSX)
+Running terminal commands:
+- npm start (in d:\Hacksmiths United\NexVerse\NexVerse-2026\x402-template\x402-demo-server, running for 1h1m42s)
+- python -m uvicorn app.main:app --reload (in d:\Hacksmiths United\NexVerse\NexVerse-2026\backend, running for 34m16s)
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.1 Pro (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

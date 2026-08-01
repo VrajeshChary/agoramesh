@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-primary font-sans antialiased overflow-x-hidden selection:bg-accent/30 selection:text-white;
+    /* Ultra-subtle Noise texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer components {
+  .premium-card {
+    @apply bg-card border border-border rounded-2xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)];
+  }
+  
+  .premium-card:hover {
+    @apply -translate-y-1 shadow-premium;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-panel {
+    @apply bg-surface/60 backdrop-blur-2xl border border-white/[0.08] shadow-glass;
+  }
+
+  .number-font {
+    @apply font-mono tracking-tight;
+  }
+  
+  .magnetic-btn {
+    @apply relative overflow-hidden transition-all duration-300 active:scale-95 ease-[cubic-bezier(0.22,1,0.36,1)];
+  }
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
